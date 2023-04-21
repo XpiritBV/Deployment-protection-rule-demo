@@ -21,7 +21,7 @@ jobs:
           application_id: ${{ vars.APP_ID }}
           application_private_key: ${{ secrets.APP_SECRET }}
 
-      - name: Get deployment rule
+      - name: Get deployment rules
         env:
           token: ${{ steps.get_workflow_token.outputs.token }}
         run: |
@@ -31,8 +31,20 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $token"\
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            $url
-
+            --url $url
+            
+      - name: Get deployment rule
+        env:
+          token: ${{ steps.get_workflow_token.outputs.token }}
+        run: |
+            url="https://api.github.com/repos/$OWNER/$REPO/environments/actions/runs/$RUNID/pending_deployments"
+            echo "$url"
+            curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $token"\
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            --url $url
+            
       - name: Post deployment rule status
         env:
           token: ${{ steps.get_workflow_token.outputs.token }}
