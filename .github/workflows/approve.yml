@@ -23,7 +23,8 @@ jobs:
 
       - name: Get deployment rules
         env:
-          token: ${{ steps.get_workflow_token.outputs.token }}
+          #token: ${{ steps.get_workflow_token.outputs.token }}
+          token: ${{ github.token }} 
         run: |
             url="https://api.github.com/repos/$OWNER/$REPO/environments/$ENVIRONMENT_NAME/deployment_protection_rules"
             echo "$url"
@@ -35,7 +36,8 @@ jobs:
             
       - name: Get deployment rule
         env:
-          token: ${{ steps.get_workflow_token.outputs.token }}
+          #token: ${{ steps.get_workflow_token.outputs.token }}
+          token: ${{ github.token }} 
         run: |
             url="https://api.github.com/repos/$OWNER/$REPO/environments/actions/runs/$RUNID/pending_deployments"
             echo "$url"
