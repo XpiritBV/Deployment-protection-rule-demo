@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch:
+  
+  push:
+    paths:
+    - .github/workflows/approve.yml
+    
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Token
+        id: get_workflow_token
+        uses: peter-murray/workflow-application-token-action@v2
+        with:
+          application_id: ${{ secrets.APP_ID }}
+          application_private_key: ${{ secrets.APP_SECRET }}
