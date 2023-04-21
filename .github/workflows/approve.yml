@@ -52,8 +52,8 @@ jobs:
           #token: ${{ steps.get_workflow_token.outputs.token }}
           token: ${{ github.token }} 
         run: |
-            # get repo Id: REPOSITORY_ID
-            url="https://api.github.com/repos/${{ github.repository_id}}/actions/runs/$RUNID/approvals"
+            url="https://api.github.com/repos/${{ github.repository_id }}/actions/runs/$RUNID/approvals"
+            # /repositories/REPOSITORY_ID/actions/runs/RUN_ID/approvals
             echo "$url"
             curl -L \
               -H "Accept: application/vnd.github+json" \
@@ -65,7 +65,8 @@ jobs:
         env:
           token: ${{ steps.get_workflow_token.outputs.token }}
         run: |
-          url="https://api.github.com/repos/${{github.repository_id  }}/actions/runs/$RUNID/deployment_protection_rule"
+          url="https://api.github.com/repos/$OWNER/$REPO/actions/runs/$RUNID/deployment_protection_rule"
+          #/repos/OWNER/REPO/actions/runs/RUN_ID/deployment_protection_rule
           echo "$url"
           curl -L -X POST \
             -H "Accept: application/vnd.github+json" \
