@@ -52,6 +52,7 @@ jobs:
           #token: ${{ steps.get_workflow_token.outputs.token }}
           token: ${{ github.token }} 
         run: |
+            # get repo Id: REPOSITORY_ID
             url="https://api.github.com/repos/$OWNER/$REPO/actions/runs/$RUNID/approvals"
             echo "$url"
             curl -L \
