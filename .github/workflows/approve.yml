@@ -47,7 +47,7 @@ jobs:
               -H "X-GitHub-Api-Version: 2022-11-28" \
               --url $url
               
-      - name: Get pending approvals
+      - name: Get approvals for the runid
         env:
           #token: ${{ steps.get_workflow_token.outputs.token }}
           token: ${{ github.token }} 
