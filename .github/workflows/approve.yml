@@ -43,4 +43,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $token"\
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            $url
+            -d '{"environment_name":"$ENVIRONMENT_NAME","state":"approved","comment":"All checks passed :rocket:."}'
+            --url $url
