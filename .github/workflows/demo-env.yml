@@ -1,6 +1,7 @@
 on: 
   push:
-  
+    paths:
+    - .github/workflows/demo-env.yml
   workflow_dispatch:
 
 jobs:
