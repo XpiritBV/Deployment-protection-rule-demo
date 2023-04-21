@@ -8,7 +8,7 @@ env:
  OWNER: XpiritBV
  REPO: Deployment-protection-rule-demo
  ENVIRONMENT_NAME: demo-2
- RUNID: 4766867724
+ RUNID: 4767689873
 
 jobs:
   job-1:
